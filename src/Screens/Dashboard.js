@@ -6,7 +6,11 @@ import { Icons } from '../Assets';
 import {vh,vw} from '../Utils/dimensions'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PieChart } from "react-native-chart-kit";
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import AddExpense from './AddExpense';
+import { useNavigation } from '@react-navigation/native';
 const Dashboard = ({income}) => {
+  const navigation=useNavigation();
   const [chartData, setChartData] = useState([
     {
         name: "Food",
@@ -48,27 +52,18 @@ const getData = async () => {
     
     
   } catch (e) {
-    // error reading value
+   
   }
 };
-  console.log('value-----',dataIn)
+ 
 
-  const renderItem=({Item})=>{
-    return(
-      <View>
-        <Text style={styles.text}>{Item.name}</Text>
-        <Text style={styles.text}>{Item.amount}</Text>
-        <Text style={styles.text}>{Item.date}</Text>
-        <Text style={styles.text}>{Item.Category}</Text>
-      </View>
-    )
-  }
+  
   return (
    <View style={styles.container}>
     
      <View style={styles.header}>
       <Image source={Icons.icon} style={styles.icon}/>
-      <TouchableOpacity style={styles.setting}>
+      <TouchableOpacity style={styles.setting} onPress={()=>navigation.navigate(AddExpense)}>
        <Image source={Icons.setting} style={styles.settingicon}/>
        </TouchableOpacity>
      </View>
@@ -121,13 +116,7 @@ const getData = async () => {
             />
 
 
-        <View>
-          <FlatList 
-          data={getData}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-          />
-        </View>
+      
      </View>
    </View>
   )

@@ -15,7 +15,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer >
         <Stack.Navigator>
-          {/* <Stack.Screen
+          <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
           options={{ headerShown: false }}
@@ -25,12 +25,12 @@ const RootNavigation = () => {
           name="HomeScreen"
           component={HomeScreen}
           options={{ headerShown: false }}
-          /> */}
-       {/* <Stack.Screen
+          /> 
+       <Stack.Screen
           name="MainScreen"
           component={MainScreen}
           options={{ headerShown: false }}
-          /> */}
+          />
            <Stack.Screen
           name="AddExpense"
           component={AddExpense}
